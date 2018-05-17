@@ -116,6 +116,8 @@ namespace LiveSplit.UI.Components
 
     public interface ICounter
     {
+        event CounterChangedHandler CounterChanged;
+
         int Count { get; }
 
         bool Increment();
