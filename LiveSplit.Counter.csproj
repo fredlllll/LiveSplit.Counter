@@ -44,8 +44,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CustomFontDialog">
-      <HintPath>..\..\Libs\CustomFontDialog\CustomFontDialog.dll</HintPath>
+      <HintPath>LiveSplit_1.7.6\CustomFontDialog.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="LiveSplit.Core">
+      <HintPath>LiveSplit_1.7.6\LiveSplit.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,6 +59,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UpdateManager">
+      <HintPath>LiveSplit_1.7.6\UpdateManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,18 +79,6 @@
     <EmbeddedResource Include="UI\Components\CounterComponentSettings.resx">
       <DependentUpon>CounterComponentSettings.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\LiveSplit.Core\LiveSplit.Core.csproj">
-      <Project>{6de847db-20a3-4848-aeee-1b4364aecdfb}</Project>
-      <Name>LiveSplit.Core</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UpdateManager\UpdateManager.csproj">
-      <Project>{56dea3a0-2eb7-493b-b50f-a5e3aa8ae52a}</Project>
-      <Name>UpdateManager</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
