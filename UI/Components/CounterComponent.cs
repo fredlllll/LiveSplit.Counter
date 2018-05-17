@@ -5,11 +5,14 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using LiveSplit.Model.Input;
+using LiveSplit.Counter;
 
 namespace LiveSplit.UI.Components
 {
     public class CounterComponent : IComponent
     {
+        CounterSaver counterSaver;
+
         public CounterComponent(LiveSplitState state)
         {
             VerticalHeight = 10;
@@ -17,6 +20,7 @@ namespace LiveSplit.UI.Components
             Cache = new GraphicsCache();
             CounterNameLabel = new SimpleLabel();
             Counter = new Counter();
+            counterSaver = new CounterSaver(Counter, state);
             this.state = state;
             Settings.CounterReinitialiseRequired += Settings_CounterReinitialiseRequired;
             Settings.IncrementUpdateRequired += Settings_IncrementUpdateRequired;
