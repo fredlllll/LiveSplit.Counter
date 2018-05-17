@@ -26,7 +26,7 @@ namespace LiveSplit.UI.Components
             Settings.IncrementUpdateRequired += Settings_IncrementUpdateRequired;
 
             // Subscribe to input hooks.
-            Settings.Hook.KeyOrButtonPressed += hook_KeyOrButtonPressed;
+            Settings.Hook.KeyOrButtonPressed += Hook_KeyOrButtonPressed;
         }
 
         public ICounter Counter { get; set; }
@@ -188,7 +188,7 @@ namespace LiveSplit.UI.Components
 
         public void Dispose()
         {
-            Settings.Hook.KeyOrButtonPressed -= hook_KeyOrButtonPressed;
+            Settings.Hook.KeyOrButtonPressed -= Hook_KeyOrButtonPressed;
         }
 
         public int GetSettingsHashCode()
@@ -210,7 +210,7 @@ namespace LiveSplit.UI.Components
         }
 
         // Basic support for keyboard/button input.
-        private void hook_KeyOrButtonPressed(object sender, KeyOrButton e)
+        private void Hook_KeyOrButtonPressed(object sender, KeyOrButton e)
         {
             if ((Form.ActiveForm == state.Form && !Settings.GlobalHotkeysEnabled)
                 || Settings.GlobalHotkeysEnabled)
