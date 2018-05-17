@@ -1,7 +1,22 @@
-﻿namespace LiveSplit.UI.Components
+﻿using System;
+
+namespace LiveSplit.UI.Components
 {
+    public delegate void CounterChangedHandler(Counter sender, CounterChangedEventArgs args);
+
+    public class CounterChangedEventArgs : EventArgs
+    {
+        public int Count { get; }
+        public CounterChangedEventArgs(int count)
+        {
+            Count = count;
+        }
+    }
+
     public class Counter : ICounter
     {
+        public event CounterChangedHandler CounterChanged;
+
         private int increment = 1;
         private int initialValue = 0;
 
@@ -16,8 +31,20 @@
             this.increment = increment;
             Count = initialValue;
         }
-        
-        public int Count { get; private set; }
+
+        private int count = 0;
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+            private set
+            {
+                count = value;
+                CounterChanged?.Invoke(this, new CounterChangedEventArgs(count));
+            }
+        }
 
         /// <summary>
         /// Increments this instance.
